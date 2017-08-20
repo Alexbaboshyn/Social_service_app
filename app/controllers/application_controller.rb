@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :collection, :resource
 
+  before_action :authenticate
+
+  attr_reader :current_user
+
   rescue_from ActiveRecord::RecordInvalid, ActiveModel::StrictValidationFailed do
     render :errors, status: :unprocessable_entity
   end
