@@ -23,5 +23,5 @@ class ApplicationController < ActionController::Base
     resource.destroy!
 
     head 204
-  end
+  end  
 end
