@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    @exception = exception
-
-    head 404
-  end
+  helper_method :collection, :resource
 
   rescue_from ActiveRecord::RecordInvalid, ActiveModel::StrictValidationFailed do
     render :errors, status: :unprocessable_entity
@@ -25,5 +21,7 @@ class ApplicationController < ActionController::Base
 
   def destroy
     resource.destroy!
+
+    head 204
   end
 end
