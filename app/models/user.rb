@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   enum gender: [:male, :female]
 
-  has_one :auth_tokens, dependent: :destroy
+  has_many :auth_tokens, dependent: :destroy
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, email: true
 end
