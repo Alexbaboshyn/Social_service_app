@@ -28,11 +28,21 @@ class Session
   end
 
   def destroy!
-    user.auth_token.destroy!
+    user.auth_tokens.each do |token|
+      token.delete
+    end
   end
 
   def auth_token
-    user.try(:auth_token).try(:value)
+    user.auth_tokens.last.value
+  end
+
+  def as_json *args
+    { auth_token: auth_token }
+  end
+
+  def decorate
+    self
   end
 
   private

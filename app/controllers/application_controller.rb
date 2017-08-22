@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   private
   def authenticate
     authenticate_or_request_with_http_token do |token, options|
-      @current_user = User.joins(:auth_token).find_by(auth_tokens: { value: token })
+      @current_user = User.joins(:auth_tokens).find_by(auth_tokens: { value: token, expired_at: DateTime.now..(DateTime.now + 2.weeks) })
     end
   end
 end

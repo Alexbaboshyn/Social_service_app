@@ -17,6 +17,7 @@ gem 'puma'
 gem 'bcrypt'
 gem 'draper'
 gem 'email_validator'
+gem "paperclip"
 
 group :development, :test do
   gem 'rails-controller-testing'
