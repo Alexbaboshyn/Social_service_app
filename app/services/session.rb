@@ -24,13 +24,11 @@ class Session
   def save!
     raise ActiveModel::StrictValidationFailed unless valid?
 
-    user.auth_tokens.create value: SecureRandom.uuid
+    user.auth_tokens.create
   end
 
   def destroy!
-    user.auth_tokens.each do |token|
-      token.delete
-    end
+    user.auth_tokens.delete_all
   end
 
   def auth_token

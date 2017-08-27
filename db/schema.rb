@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20170822132755) do
     t.string   "last_name"
     t.string   "email"
     t.string   "password_digest"
-    t.integer  "gender"
+    t.integer  "gender",              default: 0
     t.datetime "birthday"
     t.float    "latitude"
-    t.float    "longtitude"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.float    "longitude"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
