@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class Api::ProfilesController < ApplicationController
   skip_before_action :authenticate, only: [:create]
 
   def build_resource
