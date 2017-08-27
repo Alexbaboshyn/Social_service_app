@@ -10,7 +10,11 @@ class UserDecorator < ApplicationDecorator
   end
 
   def _methods
-    %I[avatar_url full_name birthdate coords tokens]
+    if context[:brief]
+       %I[full_name avatar_url age]
+     else
+       %I[avatar_url full_name birthdate coords tokens]
+     end    
   end
 
   def coords
@@ -39,6 +43,12 @@ class UserDecorator < ApplicationDecorator
 
   def tokens
     auth_tokens
+  end
+
+  def age
+    if birthday
+      DateTime.now.year - birthday.year
+    end
   end
 end
 
