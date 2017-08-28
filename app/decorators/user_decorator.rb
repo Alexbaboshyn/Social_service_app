@@ -14,7 +14,7 @@ class UserDecorator < ApplicationDecorator
        %I[full_name avatar_url age]
      else
        %I[avatar_url full_name birthdate coords tokens]
-     end    
+     end
   end
 
   def coords
@@ -51,17 +51,3 @@ class UserDecorator < ApplicationDecorator
     end
   end
 end
-
-#   def as_json *args
-#     {
-#       id: id,
-#       email: email,
-#       avatar: avatar_url,
-#       full_name: full_name,
-#       gender: gender,
-#       birthday: birthday&.iso8106,
-#       coords: {lat: latitude, lng: longtitude},
-#       tokens: auth_tokens
-#     }
-#   end
-#
