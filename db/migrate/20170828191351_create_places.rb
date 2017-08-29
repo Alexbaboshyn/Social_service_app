@@ -8,7 +8,7 @@ class CreatePlaces < ActiveRecord::Migration[5.0]
       t.string :tags, array: true, default: []
       t.string :name
       t.string :city
-      t.float :overall_rating
+      t.float :overall_rating, precision: 2, scale: 1
 
       t.timestamps
     end
