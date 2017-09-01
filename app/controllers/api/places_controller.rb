@@ -5,6 +5,6 @@ class Api::PlacesController < ApplicationController
   end
 
   def collection
-    Place.all
+    @places = PlaceSearcher.new(params).search
   end
 end

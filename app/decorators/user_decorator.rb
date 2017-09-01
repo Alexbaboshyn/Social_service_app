@@ -3,7 +3,6 @@ class UserDecorator < ApplicationDecorator
 
   decorates_association :auth_tokens
 
-
   private
   def _only
     %I[id email gender]
@@ -11,10 +10,10 @@ class UserDecorator < ApplicationDecorator
 
   def _methods
     if context[:brief]
-       %I[full_name avatar_url age]
-     else
-       %I[avatar_url full_name birthdate coords tokens]
-     end
+      %I[full_name avatar_url age]
+    else
+      %I[avatar_url full_name birthdate coords tokens]
+    end
   end
 
   def coords

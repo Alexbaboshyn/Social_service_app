@@ -11,6 +11,15 @@ class Api::ProfilesController < ApplicationController
   end
 
   def resource_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :gender, :birthday, :longitude, :latitude, :avatar)
+    params.require(:user).permit(:first_name,
+                                 :last_name,
+                                 :email,
+                                 :password,
+                                 :password_confirmation,
+                                 :gender,
+                                 :birthday,
+                                 :longitude,
+                                 :latitude,
+                                 :avatar)
   end
 end

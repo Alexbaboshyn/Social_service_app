@@ -3,7 +3,7 @@ class PlaceUser < ApplicationRecord
 
   belongs_to :place
 
-  validates :rating, uniqueness: { scope: [:user_id, :place_id],
-                                   message: "rating should be uniq for each place from each user"},
-                                   numericality: (1..5)
+  validates :user_id, uniqueness: { scope: :place_id }
+
+  validates :rating, inclusion: { in: 1..5 }
 end

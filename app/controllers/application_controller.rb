@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
 
   attr_reader :current_user
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    @exception = exception
+
+    head 404
+  end
+
   rescue_from ActiveRecord::RecordInvalid, ActiveModel::StrictValidationFailed do
     render :errors, status: :unprocessable_entity
   end

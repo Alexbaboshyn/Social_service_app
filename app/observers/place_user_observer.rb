@@ -6,14 +6,6 @@ class PlaceUserObserver < ActiveRecord::Observer
   end
 
   def rating
-    places = PlaceUser.where(place_id: @place_user.place_id)
-
-    sum = 0
-
-    places.each do |place|
-      sum += place.rating
-    end
-
-    sum.to_f / places.count
+    PlaceUser.where(place_id: @place_user.place_id).average(:rating)
   end
 end
