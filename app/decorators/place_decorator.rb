@@ -7,7 +7,10 @@ class PlaceDecorator < ApplicationDecorator
   end
 
   def _methods
-    %I[coords]
+    methods = %I[coords]
+    if context[:place]
+      methods << :"ratings"
+    end
   end
 
   def coords
@@ -16,5 +19,11 @@ class PlaceDecorator < ApplicationDecorator
 
       lng: longitude
     }
+  end
+
+  def ratings
+    place_users.map do |place_user|
+      { user: place_user.user.decorate(context: { brief: true }), rating: place_user.rating }
+    end
   end
 end
