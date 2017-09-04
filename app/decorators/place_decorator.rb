@@ -1,24 +1,31 @@
 class PlaceDecorator < ApplicationDecorator
   delegate_all
 
+  decorates_association :user
+
   private
   def _only
     %I[id name place_id tags city overall_rating]
   end
 
   def _methods
-    methods = %I[coords]
+    methods = %I[coords distance]
     if context[:place]
       methods << :"ratings"
     end
+    methods
   end
 
   def coords
     {
-      lat: latitude,
+      lat: lat,
 
-      lng: longitude
+      lng: lng
     }
+  end
+
+  def distance
+    h.current_user.distance_to_place(lat, lng)
   end
 
   def ratings

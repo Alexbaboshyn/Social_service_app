@@ -18,8 +18,8 @@ class Api::ProfilesController < ApplicationController
                                  :password_confirmation,
                                  :gender,
                                  :birthday,
-                                 :longitude,
-                                 :latitude,
+                                 :lat,
+                                 :lng,
                                  :avatar)
   end
 end

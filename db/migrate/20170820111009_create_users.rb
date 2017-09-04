@@ -7,8 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :password_digest
       t.integer :gender, default: 0
       t.datetime :birthday
-      t.float :latitude
-      t.float :longitude
+      t.float :lat
+      t.float :lng
 
       t.timestamps
     end

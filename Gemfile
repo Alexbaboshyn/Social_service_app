@@ -19,6 +19,7 @@ gem 'draper'
 gem 'email_validator'
 gem "paperclip"
 gem 'rails-observers'
+gem 'activerecord-postgres-earthdistance'
 
 group :development, :test do
   gem 'rails-controller-testing'

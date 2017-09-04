@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token
 
-  helper_method :collection, :resource
+  helper_method :collection, :resource, :current_user
 
   before_action :authenticate
 
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
     resource.destroy!
 
     head 204
+  end
+
+  def current_user
+    @current_user
   end
 
   private

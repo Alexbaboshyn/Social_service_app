@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828203203) do
+ActiveRecord::Schema.define(version: 20170904202155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "cube"
+  enable_extension "earthdistance"
 
   create_table "auth_tokens", force: :cascade do |t|
     t.string   "value"
@@ -35,8 +37,8 @@ ActiveRecord::Schema.define(version: 20170828203203) do
   end
 
   create_table "places", force: :cascade do |t|
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "lat"
+    t.float    "lng"
     t.string   "name"
     t.string   "place_id"
     t.string   "tags",           default: [],              array: true
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170828203203) do
     t.float    "overall_rating"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index "ll_to_earth(lat, lng)", name: "places_earthdistance_ix", using: :gist
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,14 +56,15 @@ ActiveRecord::Schema.define(version: 20170828203203) do
     t.string   "password_digest"
     t.integer  "gender",              default: 0
     t.datetime "birthday"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "lat"
+    t.float    "lng"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.index "ll_to_earth(lat, lng)", name: "users_earthdistance_ix", using: :gist
   end
 
   add_foreign_key "auth_tokens", "users"

@@ -12,15 +12,19 @@ class UserDecorator < ApplicationDecorator
     if context[:brief]
       %I[full_name avatar_url age]
     else
-      %I[avatar_url full_name birthdate coords tokens]
+      %I[avatar_url full_name birthdate coords tokens distance_to_place]
     end
+  end
+
+  def distance_to_place
+    distance(Place.first.lat, Place.first.lng)
   end
 
   def coords
     {
-      lat: latitude,
+      lat: lat,
 
-      lng: longitude
+      lng: lng
     }
   end
 
