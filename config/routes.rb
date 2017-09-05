@@ -6,13 +6,13 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:show, :index] do
-      resources :user_ratings, controller: 'place_users', only: [:index]
+      resources :user_ratings, only: [:index]
     end
 
     resources :places, only: [:show, :index] do
       resource :place_user, only: [:create]
 
-      resources :user_ratings, controller: 'place_users', only: [:index]
+      resources :user_ratings, only: [:index]
     end
 
     resource :session, only: [:create, :destroy]

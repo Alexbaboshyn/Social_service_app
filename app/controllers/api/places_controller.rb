@@ -4,7 +4,7 @@ class Api::PlacesController < ApplicationController
 
   private
   def resource
-    Place.find( params[:id] )
+    Place.find(params[:id])
   end
 
   def collection

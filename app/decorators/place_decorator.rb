@@ -10,9 +10,11 @@ class PlaceDecorator < ApplicationDecorator
 
   def _methods
     methods = %I[coords distance]
+
     if context[:place]
       methods << :"ratings"
     end
+
     methods
   end
 
