@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
   gem 'byebug', platform: :mri
+  gem 'simplecov', require: false
 end
 
 group :development do

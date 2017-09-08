@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should be_an ApplicationRecord }
+
+  it { should have_many(:place_users) }
+
+  it { should have_many(:users).through(:place_users) }
 end

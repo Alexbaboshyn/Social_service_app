@@ -1,1 +1,1 @@
-ActiveRecord::Base.add_observer PlaceUserObserver.instance
+# ActiveRecord::Base.add_observer PlaceUserObserver.instance

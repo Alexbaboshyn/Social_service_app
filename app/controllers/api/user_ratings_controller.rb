@@ -11,8 +11,8 @@ class Api::UserRatingsController < ApplicationController
       @context = {user: true}
       @collection = PlaceUser.where(user_id: params[:user_id])
     elsif params[:place_id].present?
-      @collection = Place.find (params[:place_id])
       @context = {place: true}
+      @collection = Place.find (params[:place_id])
     end
     @collection
   end

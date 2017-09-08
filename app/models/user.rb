@@ -17,9 +17,9 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: { case_sensitive: false }, email: true
 
-  acts_as_geolocated lat: 'lat', lng: 'lng'
-
   after_create :generate_auth_token
+
+  acts_as_geolocated lat: 'lat', lng: 'lng'
 
 
   def distance_to_place(lat, lon)
@@ -34,7 +34,6 @@ class User < ApplicationRecord
 
     (rm * c).to_i
   end
-
 
   def generate_auth_token
     self.auth_tokens.create
