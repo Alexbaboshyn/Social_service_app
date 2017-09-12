@@ -41,6 +41,16 @@ RSpec.describe Session do
 
       its([:password]) { should eq ['is invalid'] }
     end
+
+    context do
+      before { expect(session).to receive(:user).twice.and_return(user) }
+
+      before { expect(user).to receive(:authenticate).with('12345678').and_return(true) }
+
+      before { session.valid? }
+
+      xit { expect { subject }.to_not raise_error }
+    end
   end
 
   describe '#save!' do

@@ -23,7 +23,7 @@ RSpec.describe Api::UserRatingsController, type: :controller do
     end
   end
 
-  describe '#index' do  
+  describe '#index' do
 
     before { sign_in }
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ApplicationController, type: :controller do
   describe '#authenticate' do
-    let(:date) { double }
+    # let(:date) { double }
 
     before { expect(subject).to receive(:authenticate_or_request_with_http_token).and_yield('token', nil) }
 
